@@ -2,10 +2,15 @@ import React from 'react';
 import { Box, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Switch } from "@mui/material";
 import { AccountBox, Article, Home, ModeNight, People, Person, Settings, Storefront } from "@mui/icons-material";
 
-const Sidebar = () => {
+const Sidebar = ( { mode, setMode } ) => {
+    const handleMode = () => {
+        setMode( () => mode === "light" ? "dark" : "light" );
+    };
+
     return (
         <Box
-            bgcolor="white"
+            bgcolor={ "background.default" }
+            color={ "text.primary" }
             flex={ 1 }
             p={ 2 }
             sx={ { display: { xs: "none", sm: "block" } } }
@@ -73,8 +78,7 @@ const Sidebar = () => {
                             <ListItemIcon>
                                 <ModeNight/>
                             </ListItemIcon>
-                            <ListItemText primary="Profile"/>
-                            <Switch/>
+                            <Switch onChange={ handleMode }/>
                         </ListItemButton>
                     </ListItem>
                 </List>
